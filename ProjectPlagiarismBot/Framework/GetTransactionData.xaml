@@ -112,7 +112,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[io_TransactionData.Rows.Count &gt;= in_TransactionNumber]" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[io_TransactionData.Rows.Count &gt;= in_TransactionNumber]" DisplayName="Second Run and After" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
