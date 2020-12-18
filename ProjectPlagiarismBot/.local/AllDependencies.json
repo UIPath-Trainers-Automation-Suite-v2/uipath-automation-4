@@ -660,7 +660,7 @@
           "lib/net461/System.ValueTuple.dll": {}
         }
       },
-      "UiPath/20.10.7585.27318": {
+      "UiPath/20.10.7641.24102": {
         "type": "package",
         "compile": {
           "lib/_._": {}
@@ -792,7 +792,7 @@
           }
         }
       },
-      "UiPath.OCR.Activities/2.4.0": {
+      "UiPath.OCR.Activities/2.4.1": {
         "type": "package",
         "dependencies": {
           "AForge.Imaging": "2.2.5",
@@ -1019,7 +1019,7 @@
           "lib/net461/TelemetryClient.dll": {}
         }
       },
-      "UiPath.UIAutomation.Activities/20.10.6": {
+      "UiPath.UIAutomation.Activities/20.10.8": {
         "type": "package",
         "dependencies": {
           "AvalonEdit": "5.0.3",
@@ -1027,8 +1027,8 @@
           "Humanizer.Core": "2.4.2",
           "Newtonsoft.Json": "11.0.2",
           "System.IO.Abstractions": "3.0.10",
-          "UiPath": "[20.10.7585.27318]",
-          "UiPath.OCR.Activities": "2.4.0",
+          "UiPath": "[20.10.7641.24102]",
+          "UiPath.OCR.Activities": "2.4.1",
           "UiPath.OCR.Contracts": "2.7.1",
           "UiPath.Platform": "20.10.4",
           "UiPath.Telemetry.Client": "1.2.20",
@@ -2425,10 +2425,10 @@
         "version.txt"
       ]
     },
-    "UiPath/20.10.7585.27318": {
-      "sha512": "JsTRlWDWgidI40/uzjexv8R+IA6fg+GHEoIT2/yUTN+0IPeypRqBhOnL2vYBKOIO7r7IdL7FFFda/1A13KeU+Q==",
+    "UiPath/20.10.7641.24102": {
+      "sha512": "xYcQCw9/VQY9Y4wY/LWR9WEeNR3s+j5D1P4n04MiTajGfe/x0d4s5dVEJT0K2roCNKafSp+jzh6sK2vTyM/eNg==",
       "type": "package",
-      "path": "uipath/20.10.7585.27318",
+      "path": "uipath/20.10.7641.24102",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2479,7 +2479,7 @@
         "build/UiPath/libcurl_x86.dll",
         "build/UiPath/slinject.exe",
         "lib/UiPath.Interop.dll",
-        "uipath.20.10.7585.27318.nupkg.sha512",
+        "uipath.20.10.7641.24102.nupkg.sha512",
         "uipath.nuspec"
       ]
     },
@@ -2530,10 +2530,10 @@
         "uipath.excel.activities.nuspec"
       ]
     },
-    "UiPath.OCR.Activities/2.4.0": {
-      "sha512": "x2nnBjsYQGMYllrdtKXqoLDjgU3JBPX3CPA50fXhpG290T+nrZwzRZKpgcAdbpnERnGW0vtm0c8EHmZ4C0uwLw==",
+    "UiPath.OCR.Activities/2.4.1": {
+      "sha512": "piXylYbajeNVUTAZQxv00z4990l27A9EtE0KCjBhB4kio7rXZI/EkpPCmpcxR8MwHoOo2PLBTDo0U+3ky9JtuQ==",
       "type": "package",
-      "path": "uipath.ocr.activities/2.4.0",
+      "path": "uipath.ocr.activities/2.4.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2581,7 +2581,7 @@
         "lib/net461/tr/UiPath.OCR.Activities.resources.dll",
         "lib/net461/zh-CN/UiPath.OCR.Activities.Design.resources.dll",
         "lib/net461/zh-CN/UiPath.OCR.Activities.resources.dll",
-        "uipath.ocr.activities.2.4.0.nupkg.sha512",
+        "uipath.ocr.activities.2.4.1.nupkg.sha512",
         "uipath.ocr.activities.nuspec"
       ]
     },
@@ -2670,10 +2670,10 @@
         "uipath.telemetry.client.nuspec"
       ]
     },
-    "UiPath.UIAutomation.Activities/20.10.6": {
-      "sha512": "Z7RJ+kqc55kayK9Fe/RdIdtwBDEyAEsSuXwLpR+3Re1jeVOpsqYGKkGKFgclS+T3Pdx1UwuSBvgC+drZ8o+1mg==",
+    "UiPath.UIAutomation.Activities/20.10.8": {
+      "sha512": "hHSNEZrikiFIzhKqn3ynDDCTFziWXdvCng0CJ93YfOhitca901NPRmdGzYqhsRsS71IaOORQ0VJdg6NiZftQqQ==",
       "type": "package",
-      "path": "uipath.uiautomation.activities/20.10.6",
+      "path": "uipath.uiautomation.activities/20.10.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2864,7 +2864,7 @@
         "lib/net461/zh-cn/UiPath.UIAutomationNext.resources.dll",
         "lib/net461/zh-cn/UiPath.UiAutomation.Activities.resources.dll",
         "lib/net461/zh-cn/UiPath.Wizards.resources.dll",
-        "uipath.uiautomation.activities.20.10.6.nupkg.sha512",
+        "uipath.uiautomation.activities.20.10.8.nupkg.sha512",
         "uipath.uiautomation.activities.nuspec"
       ]
     },
@@ -2941,19 +2941,19 @@
     ".NETFramework,Version=v4.6.1": [
       "UiPath.Excel.Activities >= 2.9.3 <= 2.9.3",
       "UiPath.System.Activities >= 20.10.1 <= 20.10.1",
-      "UiPath.UIAutomation.Activities >= 20.10.6 <= 20.10.6"
+      "UiPath.UIAutomation.Activities >= 20.10.8 <= 20.10.8"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lin\\.nuget\\packages\\": {}
+    "C:\\Users\\mannj\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "ProjectPlagiarismBot",
       "projectName": "ProjectPlagiarismBot",
-      "projectPath": "C:\\Users\\Lin\\Documents\\Revature\\P3\\uipath-automation-4\\ProjectPlagiarismBot\\.local",
-      "packagesPath": "C:\\Users\\Lin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lin\\Documents\\Revature\\P3\\uipath-automation-4\\ProjectPlagiarismBot\\.local"
+      "projectPath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\ProjectPlagiarismBot\\.local",
+      "packagesPath": "C:\\Users\\mannj\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\ProjectPlagiarismBot\\.local"
     },
     "frameworks": {
       "net461": {
@@ -2971,7 +2971,7 @@
           "UiPath.UIAutomation.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[20.10.6, 20.10.6]"
+            "version": "[20.10.8, 20.10.8]"
           }
         }
       }

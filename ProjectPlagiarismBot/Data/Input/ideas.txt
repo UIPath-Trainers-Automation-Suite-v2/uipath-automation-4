@@ -1,0 +1,4 @@
+feed csv
+dispatcher / performer?
+each transaction is a single comparison?
+or compare against everything?
