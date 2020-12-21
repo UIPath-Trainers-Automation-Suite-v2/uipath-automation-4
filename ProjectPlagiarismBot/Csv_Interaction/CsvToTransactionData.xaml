@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>896,635.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>896,784.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CsvToTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -72,7 +72,7 @@
       <AssemblyReference>Microsoft.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CsvToTransactionData" sap:VirtualizedContainerService.HintSize="619.2,530.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CsvToTransactionData" sap:VirtualizedContainerService.HintSize="619.2,680" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[in_Config(&quot;InputDirectory&quot;).ToString]" Name="FilePath" />
     </Sequence.Variables>
@@ -81,13 +81,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[io_TransactionData]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[FilePath]" sap:VirtualizedContainerService.HintSize="577.6,155.2" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
-    <If Condition="[io_TransactionData IsNot Nothing]" sap:VirtualizedContainerService.HintSize="577.6,242.4" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[FilePath IsNot Nothing]" DisplayName="Input file path is present" sap:VirtualizedContainerService.HintSize="577.6,304.8" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[io_TransactionData]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[FilePath]" sap:VirtualizedContainerService.HintSize="333.6,155.2" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+      </If.Then>
+      <If.Else>
+        <Throw DisplayName="Input filepath not present" Exception="[new BusinessRuleException(&quot;Input path not present&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+      </If.Else>
+    </If>
+    <If Condition="[io_TransactionData IsNot Nothing]" DisplayName="Input data was loaded" sap:VirtualizedContainerService.HintSize="577.6,242.4" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;io_TransactionData loaded&quot;]" />
       </If.Then>
       <If.Else>
-        <Throw Exception="[new BusinessRuleException(&quot;Transaction csv not loaded&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        <Throw DisplayName="No transaction data" Exception="[new BusinessRuleException(&quot;No input data to work with&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Else>
     </If>
   </Sequence>
