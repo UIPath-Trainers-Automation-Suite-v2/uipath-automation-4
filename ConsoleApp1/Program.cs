@@ -34,6 +34,7 @@ namespace ConsoleApp1
             Console.WriteLine("--------------------------------------------------------");
 
             //Branch remote info
+            //GIT Equiv: none as far as I know
             BranchRemoteInfo bri = new BranchRemoteInfo();
             bri.RemoteBranchInfo(filePath);
             Console.WriteLine("--------------------------------------------------------");
@@ -45,9 +46,28 @@ namespace ConsoleApp1
             Console.WriteLine("--------------------------------------------------------");
 
             //Return patch changes in a specific file between commits
-            //OUTPUT: Index was out of range. Must be non-negative and less than the size of the collection. 
-            /*ReturnPatchChangesInFile c = new ReturnPatchChangesInFile();
-            c.class1(filePath);*/
+            //GIT EQUIV: git diff
+            //OUTPUT: "Index was out of range. Must be non-negative and less than the size of the collection." 
+            /*  
+                ReturnPatchChangesInFile c = new ReturnPatchChangesInFile();
+                c.class1(filePath);
+            */
+
+            //Displaying local branches while highlighting the current branch with an asterisk
+            //GIT EQUIV: git branch
+            DisplayLocalBranchesWhileHighlightingCurrentWithAsterisk highlight =
+                new DisplayLocalBranchesWhileHighlightingCurrentWithAsterisk();
+            highlight.HighlightCurrentBranch(filePath);
+            Console.WriteLine("--------------------------------------------------------");
+
+            //Displaying local branches that contains specified commit
+            //GIT EQUIV: git branch --contains <commit>
+            /*            
+                const string commitSha = "5b5b025afb0b4c913b4c338a42934a3863bf3644";
+                DisplayLocalBranchWithSpecificCommit display_WC = new DisplayLocalBranchWithSpecificCommit();
+                display_WC.DisplaySpecificCommit(filePath, commitSha);
+                Console.WriteLine("--------------------------------------------------------");
+            */
 
             //indicate end of sequence
             Console.WriteLine("End of Run");
