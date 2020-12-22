@@ -1,0 +1,193 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "LibGit2Sharp.NativeBinaries/2.0.312": {
+        "type": "package",
+        "build": {
+          "build/LibGit2Sharp.NativeBinaries.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/LibGit2Sharp.NativeBinaries.props": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libgit2-6777db8.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libgit2-6777db8.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-musl-x64/native/libgit2-6777db8.so": {
+            "assetType": "native",
+            "rid": "linux-musl-x64"
+          },
+          "runtimes/linux-x64/native/libgit2-6777db8.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libgit2-6777db8.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/git2-6777db8.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/git2-6777db8.pdb": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/git2-6777db8.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/git2-6777db8.pdb": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Microsoft.NETFramework.ReferenceAssemblies/1.0.0": {
+        "type": "package"
+      },
+      "LibGit2Sharp/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "LibGit2Sharp.NativeBinaries": "[2.0.312]"
+        },
+        "compile": {
+          "bin/placeholder/LibGit2Sharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibGit2Sharp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LibGit2Sharp.NativeBinaries/2.0.312": {
+      "sha512": "sL4OLOblkrLgDW+zE0OL4h9DYVCyZTlA4CppUCgqU8Ud/+Ah+Wxc3EtGpGjmH6xjDMRRpmHUFgAgzj+hzZTHZA==",
+      "type": "package",
+      "path": "libgit2sharp.nativebinaries/2.0.312",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/LibGit2Sharp.NativeBinaries.props",
+        "build/net46/LibGit2Sharp.NativeBinaries.props",
+        "buildMultiTargeting/LibGit2Sharp.NativeBinaries.props",
+        "libgit2/LibGit2Sharp.dll.config",
+        "libgit2/libgit2.license.txt",
+        "libgit2/libgit2_hash.txt",
+        "libgit2sharp.nativebinaries.2.0.312.nupkg.sha512",
+        "libgit2sharp.nativebinaries.nuspec",
+        "runtimes/linux-arm/native/libgit2-6777db8.so",
+        "runtimes/linux-arm64/native/libgit2-6777db8.so",
+        "runtimes/linux-musl-x64/native/libgit2-6777db8.so",
+        "runtimes/linux-x64/native/libgit2-6777db8.so",
+        "runtimes/osx/native/libgit2-6777db8.dylib",
+        "runtimes/win-x64/native/git2-6777db8.dll",
+        "runtimes/win-x64/native/git2-6777db8.pdb",
+        "runtimes/win-x86/native/git2-6777db8.dll",
+        "runtimes/win-x86/native/git2-6777db8.pdb"
+      ]
+    },
+    "Microsoft.NETFramework.ReferenceAssemblies/1.0.0": {
+      "sha512": "7D2TMufjGiowmt0E941kVoTIS+GTNzaPopuzM1/1LSaJAdJdBrVP0SkZW7AgDd0a2U1DjsIeaKG1wxGVBNLDMw==",
+      "type": "package",
+      "path": "microsoft.netframework.referenceassemblies/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+        "microsoft.netframework.referenceassemblies.nuspec"
+      ]
+    },
+    "LibGit2Sharp/1.0.0": {
+      "type": "project",
+      "path": "../../LibGit2Sharp/LibGit2Sharp.csproj",
+      "msbuildProject": "../../LibGit2Sharp/LibGit2Sharp.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "LibGit2Sharp >= 1.0.0",
+      "Microsoft.NETFramework.ReferenceAssemblies >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\mannj\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\mannj\\Documents\\libgit2sharp\\NativeLibraryLoadTestApp\\x64\\NativeLibraryLoadTestApp.x64.csproj",
+      "projectName": "NativeLibraryLoadTestApp.x64",
+      "projectPath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\NativeLibraryLoadTestApp\\x64\\NativeLibraryLoadTestApp.x64.csproj",
+      "packagesPath": "C:\\Users\\mannj\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\obj\\NativeLibraryLoadTestApp.x64\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\mannj\\Documents\\libgit2sharp\\NuGet.Config",
+        "C:\\Users\\mannj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "netcoreapp5.0",
+          "projectReferences": {
+            "C:\\Users\\mannj\\Documents\\libgit2sharp\\LibGit2Sharp\\LibGit2Sharp.csproj": {
+              "projectPath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\LibGit2Sharp\\LibGit2Sharp.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "netcoreapp5.0",
+        "dependencies": {
+          "Microsoft.NETFramework.ReferenceAssemblies": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

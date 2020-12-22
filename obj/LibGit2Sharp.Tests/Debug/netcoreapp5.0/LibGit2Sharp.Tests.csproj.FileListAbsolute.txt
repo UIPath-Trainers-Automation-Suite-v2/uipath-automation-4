@@ -1,0 +1,6 @@
+C:\Users\mannj\Documents\libgit2sharp\obj\LibGit2Sharp.Tests\Debug\netcoreapp5.0\LibGit2Sharp.Tests.csprojAssemblyReference.cache
+C:\Users\mannj\Documents\libgit2sharp\obj\LibGit2Sharp.Tests\Debug\netcoreapp5.0\LibGit2Sharp.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mannj\Documents\libgit2sharp\obj\LibGit2Sharp.Tests\Debug\netcoreapp5.0\LibGit2Sharp.Tests.AssemblyInfoInputs.cache
+C:\Users\mannj\Documents\libgit2sharp\obj\LibGit2Sharp.Tests\Debug\netcoreapp5.0\LibGit2Sharp.Tests.AssemblyInfo.cs
+C:\Users\mannj\Documents\libgit2sharp\obj\LibGit2Sharp.Tests\Debug\netcoreapp5.0\LibGit2Sharp.Tests.csproj.CoreCompileInputs.cache
+C:\Users\mannj\Documents\libgit2sharp\obj\LibGit2Sharp.Tests\Debug\netcoreapp5.0\NativeDllName.g.cs

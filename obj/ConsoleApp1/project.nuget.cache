@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0lwoe0ZMzp1f1GzT5nUXvl23Eh+BmK3yrOZX64W18YgZeEMLNfYp3zt3O9pVoqnJpPOVMK1hDUfr4ZjiCwfIZA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\ConsoleApp1\\ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.312\\libgit2sharp.nativebinaries.2.0.312.nupkg.sha512",
+    "C:\\Users\\mannj\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
