@@ -124,17 +124,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mannj\\Documents\\libgit2sharp\\NativeLibraryLoadTestApp\\x86\\NativeLibraryLoadTestApp.x86.csproj",
+      "projectUniqueName": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\NativeLibraryLoadTestApp\\x86\\NativeLibraryLoadTestApp.x86.csproj",
       "projectName": "NativeLibraryLoadTestApp.x86",
-      "projectPath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\NativeLibraryLoadTestApp\\x86\\NativeLibraryLoadTestApp.x86.csproj",
+      "projectPath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\NativeLibraryLoadTestApp\\x86\\NativeLibraryLoadTestApp.x86.csproj",
       "packagesPath": "C:\\Users\\mannj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\obj\\NativeLibraryLoadTestApp.x86\\",
+      "outputPath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\obj\\NativeLibraryLoadTestApp.x86\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\mannj\\Documents\\libgit2sharp\\NuGet.Config",
+        "C:\\Users\\mannj\\Documents\\uipath-automation-4\\NuGet.Config",
         "C:\\Users\\mannj\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -149,8 +149,8 @@
         "net5.0": {
           "targetAlias": "netcoreapp5.0",
           "projectReferences": {
-            "C:\\Users\\mannj\\Documents\\libgit2sharp\\LibGit2Sharp\\LibGit2Sharp.csproj": {
-              "projectPath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\LibGit2Sharp\\LibGit2Sharp.csproj"
+            "C:\\Users\\mannj\\Documents\\uipath-automation-4\\LibGit2Sharp\\LibGit2Sharp.csproj": {
+              "projectPath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\LibGit2Sharp\\LibGit2Sharp.csproj"
             }
           }
         }

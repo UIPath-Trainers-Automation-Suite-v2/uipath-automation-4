@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ufJ9hp9jGS+6B+r5Qf8CCGieDa+yIZbMcIDoTi341qLZvanuIaxc8dxG/s47mMh27f7yG9F1czSRNUfBvAPXyg==",
+  "dgSpecHash": "Mt7iIViSiUu+emJOmXLk2o6xEwyH0P+i3OKqAcsTPQzxcq4xmjqFMneLKYbG+QfsiUheBZ71ReoQR7TEryXyug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\LibGit2Sharp\\LibGit2Sharp.csproj",
+  "projectFilePath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\LibGit2Sharp\\LibGit2Sharp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.312\\libgit2sharp.nativebinaries.2.0.312.nupkg.sha512",
     "C:\\Users\\mannj\\.nuget\\packages\\microsoft.build.tasks.git\\1.0.0\\microsoft.build.tasks.git.1.0.0.nupkg.sha512",

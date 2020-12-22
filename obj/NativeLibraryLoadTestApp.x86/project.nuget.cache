@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k5pxOHbTzGi9YGk+URR01Bl61tnO7LY3bTt6JYlqfzY8cjXBzVL5KdMHAyJoLTJoXcNzmRtVsgFOIjRjEzKaEw==",
+  "dgSpecHash": "NJY+JzVzn7nlFdlgIEKwANuYrnxJEj1C0d+7ywVb/9znhXHzBqgJ3pZWi7aJt0Jhp1Y5FOfnjuhz+KIY2E6sJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mannj\\Documents\\libgit2sharp\\NativeLibraryLoadTestApp\\x86\\NativeLibraryLoadTestApp.x86.csproj",
+  "projectFilePath": "C:\\Users\\mannj\\Documents\\uipath-automation-4\\NativeLibraryLoadTestApp\\x86\\NativeLibraryLoadTestApp.x86.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.312\\libgit2sharp.nativebinaries.2.0.312.nupkg.sha512",
     "C:\\Users\\mannj\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512"
