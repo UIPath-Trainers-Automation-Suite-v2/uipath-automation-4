@@ -2,6 +2,6 @@ namespace LibGit2Sharp.Core
         {
         internal static class UniqueId
         {
-        public const string UniqueIdentifier = "d4954e12026d7b6ab4b98af2cd7db5a169a8adcb";
+        public const string UniqueIdentifier = "246dbec8547743c27be41301986d3030aa76d0af";
         }
         }
