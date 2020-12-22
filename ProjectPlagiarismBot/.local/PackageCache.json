@@ -122,11 +122,11 @@
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.CV.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.CV.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UIAutomation.Activities.Design.dll",
-        "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UiAutomation.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UIAutomationCore.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UIAutomationNext.Activities.Design.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UIAutomationNext.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UIAutomationNext.dll",
+        "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.UiAutomation.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities/20.10.8\\lib/net461/UiPath.Wizards.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.vision/2.2.0\\lib/net461/UiPath.Vision.AzureComputerVision.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.vision/2.2.0\\lib/net461/UiPath.Vision.Core.dll",
@@ -137,6 +137,16 @@
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.vision/2.2.0\\lib/net461/UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8"
+    },
+    {
+      "Package": {
+        "Id": "LibGit2Sharp",
+        "Version": "0.26.2"
+      },
+      "Assemblies": [
+        "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp/0.26.2\\lib/net46/LibGit2Sharp.dll"
+      ],
+      "Path": "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp\\0.26.2"
     }
   ],
   "Conflicts": [],
@@ -203,6 +213,21 @@
     "Humanizer.Core": {
       "Id": "Humanizer.Core",
       "Version": "2.4.2",
+      "Dependencies": []
+    },
+    "LibGit2Sharp": {
+      "Id": "LibGit2Sharp",
+      "Version": "0.26.2",
+      "Dependencies": [
+        {
+          "Item1": "LibGit2Sharp.NativeBinaries",
+          "Item2": "[2.0.306, 2.0.306]"
+        }
+      ]
+    },
+    "LibGit2Sharp.NativeBinaries": {
+      "Id": "LibGit2Sharp.NativeBinaries",
+      "Version": "2.0.306",
       "Dependencies": []
     },
     "Microsoft.AspNet.SignalR.Client": {
@@ -971,6 +996,24 @@
     },
     {
       "Package": {
+        "Id": "LibGit2Sharp",
+        "Version": "0.26.2"
+      },
+      "Assemblies": [
+        "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp\\0.26.2\\lib\\net46\\LibGit2Sharp.dll"
+      ],
+      "Path": "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp\\0.26.2"
+    },
+    {
+      "Package": {
+        "Id": "LibGit2Sharp.NativeBinaries",
+        "Version": "2.0.306"
+      },
+      "Assemblies": [],
+      "Path": "C:\\Users\\mannj\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.306"
+    },
+    {
+      "Package": {
         "Id": "Microsoft.AspNet.SignalR.Client",
         "Version": "2.4.0"
       },
@@ -1469,11 +1512,11 @@
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.CV.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.CV.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UIAutomation.Activities.Design.dll",
-        "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UiAutomation.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UIAutomationCore.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UIAutomationNext.Activities.Design.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UIAutomationNext.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UIAutomationNext.dll",
+        "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.UiAutomation.Activities.dll",
         "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8\\lib\\net461\\UiPath.Wizards.dll"
       ],
       "Path": "C:\\Users\\mannj\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8"

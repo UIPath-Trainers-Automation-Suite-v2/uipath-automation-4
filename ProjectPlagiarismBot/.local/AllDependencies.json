@@ -132,6 +132,33 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "LibGit2Sharp/0.26.2": {
+        "type": "package",
+        "dependencies": {
+          "LibGit2Sharp.NativeBinaries": "[2.0.306]"
+        },
+        "compile": {
+          "lib/net46/_._": {}
+        },
+        "runtime": {
+          "lib/net46/LibGit2Sharp.dll": {}
+        }
+      },
+      "LibGit2Sharp.NativeBinaries/2.0.306": {
+        "type": "package",
+        "build": {
+          "build/net46/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/_._": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
       "Microsoft.AspNet.SignalR.Client/2.4.0": {
         "type": "package",
         "dependencies": {
@@ -1491,6 +1518,57 @@
         "lib/netstandard1.0/Humanizer.xml",
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml"
+      ]
+    },
+    "LibGit2Sharp/0.26.2": {
+      "sha512": "qHLhuI8VEtMf7jiurT/Ypquh37S6ngllCx+aq9uqOY2evok7Fb2AzhJgvNctsXOzHaJwveBs+30sPQJFn/pISg==",
+      "type": "package",
+      "path": "libgit2sharp/0.26.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "App_Readme/CHANGES.md",
+        "App_Readme/LICENSE.md",
+        "App_Readme/README.md",
+        "lib/net46/LibGit2Sharp.dll",
+        "lib/net46/LibGit2Sharp.pdb",
+        "lib/net46/LibGit2Sharp.xml",
+        "lib/netstandard2.0/LibGit2Sharp.dll",
+        "lib/netstandard2.0/LibGit2Sharp.pdb",
+        "lib/netstandard2.0/LibGit2Sharp.xml",
+        "libgit2sharp.0.26.2.nupkg.sha512",
+        "libgit2sharp.nuspec"
+      ]
+    },
+    "LibGit2Sharp.NativeBinaries/2.0.306": {
+      "sha512": "LY9nyPE2X/eLl69ttuDPFFlKR8b5KXlqYej1YR1YmqmhF8Izo+vPX90q5ouOO5YGCf5d4lDUOC0x2yMWw00P7Q==",
+      "type": "package",
+      "path": "libgit2sharp.nativebinaries/2.0.306",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/LibGit2Sharp.NativeBinaries.props",
+        "build/net46/LibGit2Sharp.NativeBinaries.props",
+        "buildMultiTargeting/LibGit2Sharp.NativeBinaries.props",
+        "libgit2/LibGit2Sharp.dll.config",
+        "libgit2/libgit2.license.txt",
+        "libgit2/libgit2_hash.txt",
+        "libgit2sharp.nativebinaries.2.0.306.nupkg.sha512",
+        "libgit2sharp.nativebinaries.nuspec",
+        "runtimes/alpine-x64/native/libgit2-106a5f2.so",
+        "runtimes/alpine.3.9-x64/native/libgit2-106a5f2.so",
+        "runtimes/debian-arm64/native/libgit2-106a5f2.so",
+        "runtimes/debian.9-x64/native/libgit2-106a5f2.so",
+        "runtimes/fedora-x64/native/libgit2-106a5f2.so",
+        "runtimes/linux-x64/native/libgit2-106a5f2.so",
+        "runtimes/osx/native/libgit2-106a5f2.dylib",
+        "runtimes/rhel-x64/native/libgit2-106a5f2.so",
+        "runtimes/ubuntu.16.04-arm64/native/libgit2-106a5f2.so",
+        "runtimes/ubuntu.18.04-x64/native/libgit2-106a5f2.so",
+        "runtimes/win-x64/native/git2-106a5f2.dll",
+        "runtimes/win-x64/native/git2-106a5f2.pdb",
+        "runtimes/win-x86/native/git2-106a5f2.dll",
+        "runtimes/win-x86/native/git2-106a5f2.pdb"
       ]
     },
     "Microsoft.AspNet.SignalR.Client/2.4.0": {
@@ -2939,6 +3017,7 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": [
+      "LibGit2Sharp >= 0.26.2 <= 0.26.2",
       "UiPath.Excel.Activities >= 2.9.3 <= 2.9.3",
       "UiPath.System.Activities >= 20.10.1 <= 20.10.1",
       "UiPath.UIAutomation.Activities >= 20.10.8 <= 20.10.8"
@@ -2958,6 +3037,11 @@
     "frameworks": {
       "net461": {
         "dependencies": {
+          "LibGit2Sharp": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[0.26.2, 0.26.2]"
+          },
           "UiPath.Excel.Activities": {
             "include": "Runtime",
             "target": "Package",
@@ -2976,5 +3060,21 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LibGit2Sharp 0.26.2' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
+      "libraryId": "LibGit2Sharp"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LibGit2Sharp.NativeBinaries 2.0.306' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
+      "libraryId": "LibGit2Sharp.NativeBinaries"
+    }
+  ]
 }
