@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AnalyzeGitDiff" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AnalyzeGitDiff" this:AnalyzeGitDiff.in_RepoAFolderName="WeisVincent-P1" this:AnalyzeGitDiff.in_RepoBFolderName="MannJames-Project1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_RepoAFolderName" Type="InArgument(x:String)" />
     <x:Property Name="in_RepoBFolderName" Type="InArgument(x:String)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1238,967.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>638.666666666667,1566</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AnalyzeGitDiff_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -43,7 +43,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -68,17 +68,14 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sequence to analyze Git Diff output file of unique GitHub Project Repository pair, pull Similarity Index with RegEx and calculate project repository similarity percentage." DisplayName="AnalyzeGitDiff" sap:VirtualizedContainerService.HintSize="426,902.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sequence to analyze Git Diff output file of unique GitHub Project Repository pair, pull Similarity Index with RegEx and calculate project repository similarity percentage." DisplayName="AnalyzeGitDiff" sap:VirtualizedContainerService.HintSize="604.666666666667,1461.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="DiffOutputText" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="SimilarityIndices" />
-      <Variable x:TypeArguments="x:Int32" Name="SimilarityIndexTotal">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="SimilarityIndexTotal" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -86,9 +83,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[DiffOutputText]" DisplayName="Read Text File - Git Diff Output .TXT" FileName="[String.Format(&quot;Data\Output\GitDiff_{0}_{1}.TXT&quot;, in_RepoAFolderName, in_RepoBFolderName)]" sap:VirtualizedContainerService.HintSize="384,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:Matches BuilderPattern="(?&lt;=(similarity index )).*(?=%)" DisplayName="Matches - Pull Similarity Index" sap:VirtualizedContainerService.HintSize="384,58.6666666666667" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[DiffOutputText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=(similarity index )).*(?=%)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=(similarity index )).*(?=%)" RegexOption="IgnoreCase" Result="[SimilarityIndices]" />
-    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each - Sum Similarity Indices" sap:VirtualizedContainerService.HintSize="384,292.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[SimilarityIndices]">
+    <ui:ReadTextFile Content="[DiffOutputText]" DisplayName="Read Text File - Git Diff Output .TXT" FileName="[String.Format(&quot;Data\Output\GitDiff_{0}_{1}.TXT&quot;, in_RepoAFolderName, in_RepoBFolderName)]" sap:VirtualizedContainerService.HintSize="562.666666666667,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:Matches BuilderPattern="(?&lt;=(similarity index )).*(?=%)" DisplayName="Matches - Pull Similarity Index" sap:VirtualizedContainerService.HintSize="562.666666666667,58.6666666666667" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[DiffOutputText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=(similarity index )).*(?=%)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=(similarity index )).*(?=%)" RegexOption="IgnoreCase" Result="[SimilarityIndices]" />
+    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each - Sum Similarity Indices" sap:VirtualizedContainerService.HintSize="562.666666666667,292.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[SimilarityIndices]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="str:Match">
           <ActivityAction.Argument>
@@ -112,7 +109,7 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <Assign DisplayName="Assign - Calculate Average Similarity Percentage" sap:VirtualizedContainerService.HintSize="384,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - Calculate Average Similarity Percentage" sap:VirtualizedContainerService.HintSize="562.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Double">[out_SimilarityPercentage]</OutArgument>
       </Assign.To>
@@ -120,6 +117,25 @@
         <InArgument x:TypeArguments="x:Double">[0.01 * SimilarityIndexTotal/SimilarityIndices.Count]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="384,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Similarity Percentage of Git Diff on {0} against {1}: {2}&quot;, in_RepoAFolderName, in_RepoBFolderName, out_SimilarityPercentage.ToString(&quot;P&quot;))]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="562.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Similarity Percentage of Git Diff on {0} against {1}: {2}&quot;, in_RepoAFolderName, in_RepoBFolderName, out_SimilarityPercentage.ToString(&quot;P&quot;))]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FilterResults workflow" sap:VirtualizedContainerService.HintSize="562.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\FilterResults.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GitDiff">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DiffOutputText" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="562.666666666667,381.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,302.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[out_SimilarityPercentage &gt;= 45]" sap:VirtualizedContainerService.HintSize="484,210.666666666667" sap2010:WorkflowViewState.IdRef="If_1" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>

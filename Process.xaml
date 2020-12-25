@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1238,1847.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>807.333333333333,1887.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -137,8 +137,12 @@
     </If>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke PowerShell_RunGitDiff workflow" sap:VirtualizedContainerService.HintSize="522,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Components\PowerShell_RunGitDiff.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">[RepoAFolderName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">[RepoBFolderName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoAFolderName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoBFolderName" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AnalyzeGitDiff workflow" sap:VirtualizedContainerService.HintSize="522,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Components\AnalyzeGitDiff.xaml">

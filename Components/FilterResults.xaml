@@ -1,19 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="FilterResults" this:FilterResults.in_GitDiff="C:\Users\nfh22\OneDrive\Desktop\Training\ProjectPlagiarismBot\Data\Input\txt.txt" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="FilterResults" this:FilterResults.in_GitDiff="C:\Users\nfh22\OneDrive\Desktop\Training\ProjectPlagiarismBot\Data\Output\GitDiff_WeisVincent-P1_MannJames-Project1.TXT" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="out_AveragedSimilarityIndex" Type="OutArgument(x:Double)" />
     <x:Property Name="in_GitDiff" Type="InArgument(x:String)" />
-    <x:Property Name="out_Similarity100" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <this:FilterResults.out_Similarity100>
-    <InArgument x:TypeArguments="sd:DataTable" />
-  </this:FilterResults.out_Similarity100>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>795.333333333333,2132.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>638.666666666667,1170.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FilterResults_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="58">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -43,10 +38,12 @@
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -74,14 +71,14 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="outputs averaged similarity index between 2 repositories with GitDiff supplied" DisplayName="FilterResults" sap:VirtualizedContainerService.HintSize="584.666666666667,2028" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="only runs if similarity index calculated is greater than 75%" DisplayName="FilterResults" sap:VirtualizedContainerService.HintSize="426,1066" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="TxtFileWithGitDiff" />
-      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="SimilarityIndex" />
-      <Variable x:TypeArguments="x:Int32" Default="0" Name="TotalSimilarityValue" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="thingsdiffed" />
+      <Variable x:TypeArguments="sd:DataTable" Name="HighSimilarityDT" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -89,113 +86,44 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[TxtFileWithGitDiff]" DisplayName="Read Text File" FileName="[in_GitDiff]" sap:VirtualizedContainerService.HintSize="542.666666666667,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:Matches BuilderPattern="((?:similarity index)).*(?=%)$" DisplayName="Grabs similarity index" sap:VirtualizedContainerService.HintSize="542.666666666667,58.6666666666667" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[TxtFileWithGitDiff]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;((?:similarity index)).*(?=%)$&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=(similarity index)).*(?=%)" RegexOption="None" Result="[SimilarityIndex]" />
-    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="542.666666666667,496.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[SimilarityIndex]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="str:Match">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="str:Match" Name="item" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,358" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:Int32" Name="IndexValue" />
-              <Variable x:TypeArguments="x:String" Name="itemstr" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_8">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[itemstr]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[item.ToString]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_7">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Int32">[IndexValue]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Int32">[convert.ToInt32(itemstr)]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_4">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Int32">[TotalSimilarityValue]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Int32">[TotalSimilarityValue+IndexValue]</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
-    <Assign sap:VirtualizedContainerService.HintSize="542.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_5">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Double">[out_AveragedSimilarityIndex]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">[TotalSimilarityValue/(100*SimilarityIndex.Count)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="542.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[out_AveragedSimilarityIndex.ToString]" />
-    <ui:BuildDataTable DataTable="[out_Similarity100]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="542.666666666667,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Diff_x0020_Command&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Similarity_x0020_Index&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-    <If sap2010:Annotation.AnnotationText="if similarity index is 100 shows trainers what is being diffed that is causing this" Condition="[out_AveragedSimilarityIndex.Equals(100)]" sap:VirtualizedContainerService.HintSize="542.666666666667,846" sap2010:WorkflowViewState.IdRef="If_1">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="396.666666666667,661.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <ui:ReadTextFile Content="[TxtFileWithGitDiff]" DisplayName="Read Text File" FileName="Data\Output\GitDiff_WeisVincent-P1_MannJames-Project1.TXT" sap:VirtualizedContainerService.HintSize="384,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:BuildDataTable DataTable="[HighSimilarityDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="384,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Diff_x0020_Command&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Similarity_x0020_Index&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:Matches sap:VirtualizedContainerService.HintSize="384,58.6666666666667" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[TxtFileWithGitDiff]" IsBuilderTabModified="False" Pattern="\n(.*)\n(.*)(?&lt;=(similarity index)).*" RegexOption="IgnoreCase, Compiled" Result="[thingsdiffed]" />
+    <ParallelForEach x:TypeArguments="str:Match" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="384,470.666666666667" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_1" Values="[thingsdiffed]">
+      <ActivityAction x:TypeArguments="str:Match">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="str:Match" Name="item" />
+        </ActivityAction.Argument>
+        <Sequence sap:VirtualizedContainerService.HintSize="304,318" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="Command" />
+            <Variable x:TypeArguments="x:String" Name="Similarity" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:Matches sap:VirtualizedContainerService.HintSize="354.666666666667,58.6666666666667" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[TxtFileWithGitDiff]" IsBuilderTabModified="False" Pattern="\n(.*)\n(.*)(?&lt;=(similarity index)).*" RegexOption="IgnoreCase, Compiled" Result="[thingsdiffed]" />
-          <ParallelForEach x:TypeArguments="str:Match" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="354.666666666667,470.666666666667" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_1" Values="[thingsdiffed]">
-            <ActivityAction x:TypeArguments="str:Match">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="str:Match" Name="item" />
-              </ActivityAction.Argument>
-              <Sequence sap:VirtualizedContainerService.HintSize="304,318" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="x:String" Name="Command" />
-                  <Variable x:TypeArguments="x:String" Name="Similarity" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_9">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[Command]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[item.ToString.Split(environment.NewLine.ToCharArray)(1)]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_10">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[Similarity]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[item.ToString.Split(environment.NewLine.ToCharArray)(2)]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Command, Similarity}]" DataTable="[out_Similarity100]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-              </Sequence>
-            </ActivityAction>
-          </ParallelForEach>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Command]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[item.ToString.Split(environment.NewLine.ToCharArray)(1)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Similarity]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[item.ToString.Split(environment.NewLine.ToCharArray)(2)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Command, Similarity}]" DataTable="[HighSimilarityDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
         </Sequence>
-      </If.Then>
-    </If>
+      </ActivityAction>
+    </ParallelForEach>
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[HighSimilarityDT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="384,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="High Similarity Index" WorkbookPath="Data\Output\OutputMatrix.xlsx" />
   </Sequence>
 </Activity>
