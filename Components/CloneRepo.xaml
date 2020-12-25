@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>638.666666666667,985.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>728,985.333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CloneRepos_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -98,7 +98,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ReadTextFile>
-          <ui:InvokePowerShell x:TypeArguments="sma:PSObject" sap2010:Annotation.AnnotationText="Run Power Shell script to navigate to correct directory and clone associate Github repository" CommandText="[PsScript]" ContinueOnError="True" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="384,104" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True">
+          <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Run Power Shell script to navigate to correct directory and clone associate Github repository" CommandText="[PsScript]" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="384,104" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True">
             <ui:InvokePowerShell.Parameters>
               <InArgument x:TypeArguments="x:String" x:Key="RepoLink">[in_RepoLink]</InArgument>
             </ui:InvokePowerShell.Parameters>
@@ -122,7 +122,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sma:RemoteException" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,90.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Successfully cloned repo from &quot; + in_RepoLink]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Successfully cloned repo from &quot; + in_RepoLink]" />
           </ActivityAction>
         </Catch>
         <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="430.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
@@ -136,7 +136,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,90.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Unable to clone from &quot; + in_RepoLink]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Unable to clone from &quot; + in_RepoLink]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
