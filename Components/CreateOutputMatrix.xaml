@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1238,1648</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>728,1688</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateOutputMatrix_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -78,11 +78,7 @@
   <Sequence sap2010:Annotation.AnnotationText="Sequence to create OutputMatrix.XLSX, print GitHub Repo URLs from input .CSV to X-axis and Y-axis, and print similarity percentage of unique GitHub Project Repository pair from in_SimilarityPercentageDT to Output Matrix sheet for RepoA/RepoB and RepoB/RepoA." DisplayName="CreateOutputMatrix" sap:VirtualizedContainerService.HintSize="468.666666666667,1583.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="i" />
-      <Variable x:TypeArguments="x:String" Name="ExcelSheetName">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Output Matrix</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Output Matrix" Name="ExcelSheetName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">

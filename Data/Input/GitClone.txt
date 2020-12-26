@@ -1,9 +1,9 @@
 Param(
-	[Parameter(Mandatory=$true)] [string]$RepoLink --quiet
+	[Parameter(Mandatory=$true)] [string]$RepoLink 
 )
 
 try{
 	cd Data/Temp
-	git clone $RepoLink
+	git clone $RepoLink --quiet;
 } 
 catch { "Unable to clone from $RepoLink" }

@@ -516,9 +516,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="522,668.666666666667" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="485.333333333333,498" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to close all applications" sap:VirtualizedContainerService.HintSize="475.333333333333,522.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                <TryCatch DisplayName="Try to close all applications" sap:VirtualizedContainerService.HintSize="438.666666666667,352" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <TryCatch.Try>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
@@ -527,7 +527,7 @@
                                     </ui:InvokeWorkflowFile>
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="441.333333333333,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -555,24 +555,13 @@
                                     </Catch>
                                   </TryCatch.Catches>
                                   <TryCatch.Finally>
-                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,284.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                                      <ui:CommentOut.Body>
-                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke HandleOutput workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="HandleOutput.xaml">
-                                            <ui:InvokeWorkflowFile.Arguments>
-                                              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_GitHubRepoURLs">[GitHubRepoURLs]</InArgument>
-                                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SimilarityPercentageDT">[SimilarityPercentageDT]</InArgument>
-                                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionData">[TransactionData]</InArgument>
-                                            </ui:InvokeWorkflowFile.Arguments>
-                                          </ui:InvokeWorkflowFile>
-                                        </Sequence>
-                                      </ui:CommentOut.Body>
-                                    </ui:CommentOut>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke HandleOutput workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="HandleOutput.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_GitHubRepoURLs">[GitHubRepoURLs]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SimilarityPercentageDT">[SimilarityPercentageDT]</InArgument>
+                                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionData">[TransactionData]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
                                   </TryCatch.Finally>
                                 </TryCatch>
                               </State.Entry>
