@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>807.333333333333,1887.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1300,2818.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -43,7 +43,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -69,15 +69,18 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="564,1782.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1310,2714" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="RepoAFilePathExists" />
       <Variable x:TypeArguments="x:Boolean" Name="RepoBFilePathExists" />
       <Variable x:TypeArguments="x:String" Name="RepoAFolderName" />
       <Variable x:TypeArguments="x:String" Name="RepoBFolderName" />
       <Variable x:TypeArguments="x:Double" Name="SimilarityPercentage" />
+      <Variable x:TypeArguments="x:String" Name="RepoAFullPath" />
+      <Variable x:TypeArguments="x:String" Name="RepoBFullPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -85,7 +88,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - RepoA Folder Name" sap:VirtualizedContainerService.HintSize="522,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - RepoA Folder Name" sap:VirtualizedContainerService.HintSize="1268,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[RepoAFolderName]</OutArgument>
       </Assign.To>
@@ -93,7 +96,7 @@
         <InArgument x:TypeArguments="x:String">[Split(in_TransactionItem("RepoA").ToString, "/").Last]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign - RepoB Folder Name" sap:VirtualizedContainerService.HintSize="522,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign - RepoB Folder Name" sap:VirtualizedContainerService.HintSize="1268,62" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[RepoBFolderName]</OutArgument>
       </Assign.To>
@@ -101,63 +104,197 @@
         <InArgument x:TypeArguments="x:String">[Split(in_TransactionItem("RepoB").ToString, "/").Last]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:PathExists DisplayName="Path Exists - RepoA File Path" Exists="[RepoAFilePathExists]" sap:VirtualizedContainerService.HintSize="522,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[String.Format(&quot;Data\Temp\{0}&quot;, RepoAFolderName)]" PathType="Folder" />
-    <ui:PathExists DisplayName="Path Exists - RepoB File Path" Exists="[RepoBFilePathExists]" sap:VirtualizedContainerService.HintSize="522,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[String.Format(&quot;Data\Temp\{0}&quot;, RepoBFolderName)]" PathType="Folder" />
-    <If Condition="[RepoAFilePathExists]" sap:VirtualizedContainerService.HintSize="522,360" sap2010:WorkflowViewState.IdRef="If_1">
-      <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Get Paths to clone to" sap:VirtualizedContainerService.HintSize="1268,588" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="RepoATargetPath" />
+        <Variable x:TypeArguments="x:String" Name="RepoBTargetPath" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Target Paths" sap:VirtualizedContainerService.HintSize="848.666666666667,128" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RepoATargetPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("GitCloneRepoATargetPath").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RepoBTargetPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("GitCloneRepoBTargetPath").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <Parallel DisplayName="Parallel - Target Folder Check" sap:VirtualizedContainerService.HintSize="848.666666666667,160" sap2010:WorkflowViewState.IdRef="Parallel_1">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Ensure Target Folder for RepoA Exists" sap:VirtualizedContainerService.HintSize="337.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Components\EnsureTargetFolderExists.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_TargetFolderPath">[RepoATargetPath]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Ensure Target Folder for RepoB Exists" sap:VirtualizedContainerService.HintSize="337.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Components\EnsureTargetFolderExists.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_TargetFolderPath">[RepoBTargetPath]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Parallel>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Complete Paths of repos" sap:VirtualizedContainerService.HintSize="848.666666666667,128" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RepoAFullPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}\{1}", RepoATargetPath,RepoAFolderName)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RepoBFullPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}\{1}", RepoBTargetPath,RepoBFolderName)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+    </Sequence>
+    <Sequence DisplayName="Clone Repos" sap:VirtualizedContainerService.HintSize="1268,796.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="RepoALink" />
+        <Variable x:TypeArguments="x:String" Name="RepoBLink" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1226,128" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RepoALink]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem("RepoA").ToString + ".git"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RepoBLink]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem("RepoB").ToString + ".git"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <Parallel sap:VirtualizedContainerService.HintSize="1226,536.666666666667" sap2010:WorkflowViewState.IdRef="Parallel_2">
+        <Sequence DisplayName="Clone RepoA" sap:VirtualizedContainerService.HintSize="526,490.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloneRepo workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Components\CloneRepo.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_RepoLink">[in_TransactionItem("RepoA").ToString + ".git"]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
+          <ui:PathExists DisplayName="Path Exists - RepoA File Path" Exists="[RepoAFilePathExists]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[RepoAFullPath]" PathType="Folder" />
+          <If Condition="[RepoAFilePathExists]" sap:VirtualizedContainerService.HintSize="484,268" sap2010:WorkflowViewState.IdRef="If_3">
+            <If.Else>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloneRepo workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Components\CloneRepo.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RepoLink">[in_TransactionItem("RepoA").ToString + ".git"]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RepoTargetPath">[in_Config("GitCloneRepoATargetPath").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RepoFolderName">[RepoAFolderName]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </If.Else>
+          </If>
         </Sequence>
-      </If.Else>
-    </If>
-    <If Condition="[RepoBFilePathExists]" sap:VirtualizedContainerService.HintSize="522,360" sap2010:WorkflowViewState.IdRef="If_2">
-      <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Clone RepoB" sap:VirtualizedContainerService.HintSize="526,490.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloneRepo workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Components\CloneRepo.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_RepoLink">[in_TransactionItem("RepoB").ToString + ".git"]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
+          <ui:PathExists DisplayName="Path Exists - RepoB File Path" Exists="[RepoBFilePathExists]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[RepoBFullPath]" PathType="Folder" />
+          <If Condition="[RepoBFilePathExists]" sap:VirtualizedContainerService.HintSize="484,268" sap2010:WorkflowViewState.IdRef="If_4">
+            <If.Else>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloneRepo workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Components\CloneRepo.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RepoLink">[in_TransactionItem("RepoB").ToString + ".git"]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RepoTargetPath">[in_Config("GitCloneRepoBTargetPath").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RepoFolderName">[RepoBFolderName]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </If.Else>
+          </If>
         </Sequence>
-      </If.Else>
-    </If>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke PowerShell_RunGitDiff workflow" sap:VirtualizedContainerService.HintSize="522,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Components\PowerShell_RunGitDiff.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoAFolderName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoBFolderName" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AnalyzeGitDiff workflow" sap:VirtualizedContainerService.HintSize="522,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Components\AnalyzeGitDiff.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoAFolderName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoBFolderName" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Double" x:Key="out_SimilarityPercentage">
-          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="SimilarityPercentage" />
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_TransactionItem(&quot;RepoA&quot;).ToString, in_TransactionItem(&quot;RepoB&quot;).ToString, SimilarityPercentage}]" DataTable="[io_SimilarityPercentageDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+      </Parallel>
+    </Sequence>
+    <Sequence DisplayName="Run Diff on both repos" sap:VirtualizedContainerService.HintSize="1268,812.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="GitDiffOutputPath" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Ensure GitDiff Target Folder Exists" sap:VirtualizedContainerService.HintSize="337.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Components\EnsureTargetFolderExists.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_TargetFolderPath">[in_Config("GitDiffOutputFolderPath").ToString()]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <Assign sap:VirtualizedContainerService.HintSize="337.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[GitDiffOutputPath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Format("{0}\GitDiff_{1}_{2}.TXT", in_Config("GitDiffOutputFolderPath").ToString(), RepoAFolderName, RepoBFolderName)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke PowerShell_RunGitDiff workflow" sap:VirtualizedContainerService.HintSize="337.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Components\PowerShell_RunGitDiff.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_GitDiffOutputPath">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="GitDiffOutputPath" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFullPath">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoAFullPath" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFullPath">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RepoBFullPath" />
+          </InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AnalyzeGitDiff workflow" sap:VirtualizedContainerService.HintSize="337.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Components\AnalyzeGitDiff.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_SimilarityPercentage">[SimilarityPercentage]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_GitDiffOutputPath">[GitDiffOutputPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">[RepoBFolderName]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">[RepoAFolderName]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete GitDiff File" sap:VirtualizedContainerService.HintSize="337.333333333333,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[GitDiffOutputPath]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="337.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Similarity Percentage of Git Diff on {0} against {1}: {2}&quot;, RepoAFolderName, RepoBFolderName, SimilarityPercentage.ToString(&quot;P&quot;))]" />
+    </Sequence>
+    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_TransactionItem(&quot;RepoA&quot;).ToString, in_TransactionItem(&quot;RepoB&quot;).ToString, SimilarityPercentage}]" DataTable="[io_SimilarityPercentageDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="1268,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
   </Sequence>
 </Activity>

@@ -1,10 +1,11 @@
 Param(
-	[Parameter(Mandatory=$true)] [string]$RepoAFolderName,
-	[Parameter(Mandatory=$true)] [string]$RepoBFolderName
+	[Parameter(Mandatory=$true)] [string]$RepoAFullPath,
+	[Parameter(Mandatory=$true)] [string]$RepoBFullPath,
+	[Parameter(Mandatory=$true)] [string]$GitDiffOutputPath
 )
 
 try{
-	cd Data/Temp
-	git diff --patience --no-index -C1% -wbB --output ../Output/GitDiff_${RepoAFolderName}_${RepoBFolderName}.TXT $RepoAFolderName $RepoBFolderName
+	git config core.safecrlf false
+	git diff --patience --no-index -C1% -wbB --output $GitDiffOutputPath $RepoAFullPath $RepoBFullPath
 } 
-catch { "Unable to Git Diff $RepoAFolderName against $RepoBFolderName" }
+catch { "Unable to Git Diff $RepoAFullPath against $RepoBFullPath" }

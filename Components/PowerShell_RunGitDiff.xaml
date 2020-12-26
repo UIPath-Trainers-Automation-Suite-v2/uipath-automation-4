@@ -1,12 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="PowerShell_RunGitDiff" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_RepoAFolderName" Type="InArgument(x:String)" />
-    <x:Property Name="in_RepoBFolderName" Type="InArgument(x:String)" />
+    <x:Property Name="in_GitDiffOutputPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_RepoAFullPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_RepoBFullPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1238,938</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>538.666666666667,978</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>PowerShell_RunGitDiff_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -78,7 +79,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="506.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Running Git Diff on {0} against {1}&quot;, in_RepoAFolderName, in_RepoBFolderName)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="506.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Running Git Diff on {0} against {1}&quot;, in_RepoAFullPath, in_RepoBFullPath)]" />
     <Sequence DisplayName="PowerShell_RunGitDiff" sap:VirtualizedContainerService.HintSize="506.666666666667,601.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -99,8 +100,15 @@
             <ui:ReadTextFile Content="[GitDiffCommand]" DisplayName="Read Text File" FileName="Data\Input\GitDiff.txt" sap:VirtualizedContainerService.HintSize="384,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
             <ui:InvokePowerShell x:TypeArguments="sma:PSObject" CommandText="[GitDiffCommand]" ContinueOnError="True" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="384,58.6666666666667" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True">
               <ui:InvokePowerShell.Parameters>
-                <InArgument x:TypeArguments="x:String" x:Key="RepoAFolderName">[in_RepoAFolderName]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="RepoBFolderName">[in_RepoBFolderName]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="RepoAFullPath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_RepoAFullPath" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="RepoBFullPath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_RepoBFullPath" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="GitDiffOutputPath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_GitDiffOutputPath" />
+                </InArgument>
               </ui:InvokePowerShell.Parameters>
             </ui:InvokePowerShell>
           </Sequence>

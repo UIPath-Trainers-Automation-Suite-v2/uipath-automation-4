@@ -1,13 +1,17 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AnalyzeGitDiff" this:AnalyzeGitDiff.in_RepoAFolderName="WeisVincent-P1" this:AnalyzeGitDiff.in_RepoBFolderName="MannJames-Project1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AnalyzeGitDiff" this:AnalyzeGitDiff.in_RepoBFolderName="MannJames-Project1" this:AnalyzeGitDiff.in_RepoAFolderName="WeisVincent-P1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_RepoAFolderName" Type="InArgument(x:String)" />
-    <x:Property Name="in_RepoBFolderName" Type="InArgument(x:String)" />
     <x:Property Name="out_SimilarityPercentage" Type="OutArgument(x:Double)" />
+    <x:Property Name="in_GitDiffOutputPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_RepoBFolderName" Type="InArgument(x:String)" />
+    <x:Property Name="in_RepoAFolderName" Type="InArgument(x:String)" />
   </x:Members>
+  <this:AnalyzeGitDiff.in_GitDiffOutputPath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AnalyzeGitDiff.in_GitDiffOutputPath>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>728,1298.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>516,1433.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AnalyzeGitDiff_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -71,7 +75,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sequence to analyze Git Diff output file of unique GitHub Project Repository pair, pull Similarity Index with RegEx and calculate project repository similarity percentage." DisplayName="AnalyzeGitDiff" sap:VirtualizedContainerService.HintSize="526,1194" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sequence to analyze Git Diff output file of unique GitHub Project Repository pair, pull Similarity Index with RegEx and calculate project repository similarity percentage." DisplayName="AnalyzeGitDiff" sap:VirtualizedContainerService.HintSize="526,1328.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="DiffOutputText" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="SimilarityIndices" />
@@ -83,7 +87,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[DiffOutputText]" DisplayName="Read Text File - Git Diff Output .TXT" FileName="[String.Format(&quot;Data\Output\GitDiff_{0}_{1}.TXT&quot;, in_RepoAFolderName, in_RepoBFolderName)]" sap:VirtualizedContainerService.HintSize="484,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[String.Format(&quot;Calculating Similarity Percentage by analyzing {0}...&quot;, in_GitDiffOutputPath)]" />
+    <ui:ReadTextFile Content="[DiffOutputText]" DisplayName="Read Text File - Git Diff Output .TXT" FileName="[in_GitDiffOutputPath]" sap:VirtualizedContainerService.HintSize="484,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <ui:Matches BuilderPattern="(?&lt;=(similarity index )).*(?=%)" DisplayName="Matches - Pull Similarity Index" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[DiffOutputText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=(similarity index )).*(?=%)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=(similarity index )).*(?=%)" RegexOption="IgnoreCase" Result="[SimilarityIndices]" />
     <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each - Sum Similarity Indices" sap:VirtualizedContainerService.HintSize="484,292.666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[SimilarityIndices]">
       <ui:ForEach.Body>
@@ -122,12 +127,8 @@
       <If.Then>
         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FilterResults workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\FilterResults.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_RepoAFolderName" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_RepoBFolderName" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">[in_RepoAFolderName]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">[in_RepoBFolderName]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>

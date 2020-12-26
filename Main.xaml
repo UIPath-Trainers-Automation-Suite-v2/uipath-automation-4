@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>728,904.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>677.333333333333,904.666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -338,7 +338,7 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,106.666666666667" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="799.333333333333,2396.66666666667" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="752.666666666667,1967.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -419,10 +419,18 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Dispatcher workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Dispatcher.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InOutArgument>
-                                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionData">[TransactionData]</OutArgument>
-                                        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_GitHubRepoURLs">[GitHubRepoURLs]</OutArgument>
-                                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SimilarityPercentageDT">[SimilarityPercentageDT]</OutArgument>
+                                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionData">
+                                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="TransactionData" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_GitHubRepoURLs">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="GitHubRepoURLs" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SimilarityPercentageDT">
+                                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="SimilarityPercentageDT" />
+                                        </OutArgument>
+                                        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                        </InOutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Status" DataTable="[TransactionData]" DefaultValue="[Config(&quot;Status_Pending&quot;).ToString]" DisplayName="Add Status Column" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
@@ -516,7 +524,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="485.333333333333,498" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,124" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
                                 <TryCatch DisplayName="Try to close all applications" sap:VirtualizedContainerService.HintSize="438.666666666667,352" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <TryCatch.Try>
@@ -560,6 +568,7 @@
                                         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_GitHubRepoURLs">[GitHubRepoURLs]</InArgument>
                                         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SimilarityPercentageDT">[SimilarityPercentageDT]</InArgument>
                                         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionData">[TransactionData]</InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                   </TryCatch.Finally>
