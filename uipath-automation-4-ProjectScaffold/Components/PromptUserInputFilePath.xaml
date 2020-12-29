@@ -5,10 +5,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>896,1657.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1280.66666666667,872</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>PromptUserInputFilePath_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="25">
+    <scg:List x:TypeArguments="x:String" Capacity="21">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -30,14 +30,10 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>System.Xml.Serialization</x:String>
-      <x:String>System.Runtime.Serialization</x:String>
-      <x:String>System.Collections.ObjectModel</x:String>
-      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -64,13 +60,12 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sequence to prompt the user to enter the complete file path of the GitHub Repo URL input .CSV and write the file path to Config.XLSX." DisplayName="PromptUserInputFilePath" sap:VirtualizedContainerService.HintSize="541.6,1592.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sequence to prompt the user to enter the complete file path of the GitHub Repo URL input .CSV and write the file path to Config.XLSX, prompt the user to select the output folder path to save OutputMatrix.XLSX and write the full OutputMatrixFilePath to Config.XLSX." DisplayName="PromptUserInputFilePath" sap:VirtualizedContainerService.HintSize="376,807.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="InputFilePath" />
-      <Variable x:TypeArguments="x:String" Name="OutputFilePath" />
+      <Variable x:TypeArguments="x:String" Name="OutputFolderPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -78,18 +73,10 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="500,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[&quot;Requesting user input to get csv file with repos&quot;]" />
-    <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="GitHub Repo URL Input .CSV" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="500,60" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Please enter the complete file path of the GitHub Repo URL input .CSV:&quot;]" />
-    <ui:SelectFile DisplayName="Select File" Filter="All files (*.*)|*.*" sap:VirtualizedContainerService.HintSize="500,22.4" sap2010:WorkflowViewState.IdRef="SelectFile_3" SelectedFile="[InputFilePath]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InputValidator workflow" sap:VirtualizedContainerService.HintSize="500,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Components\InputValidator.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="x:String" x:Key="in_InputFilePath" />
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_InputFileValid" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="500,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[InputFilePath.ToString]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="500,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Requesting user input to get xlsx file for output matrix&quot;]" />
-    <Assign DisplayName="Assign Input .CSV File Path" sap:VirtualizedContainerService.HintSize="500,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Requesting user input to get csv file with repos&quot;]" />
+    <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="GitHub Repo URL Input .CSV" DisplayName="Message Box - Input .CSV File Path" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Please enter the complete file path of the GitHub Repo URL input .CSV:&quot;]" />
+    <ui:SelectFile DisplayName="Select File" Filter="All files (*.*)|*.*" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SelectFile_1" SelectedFile="[InputFilePath]" />
+    <Assign DisplayName="Assign Input .CSV File Path" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Object">[io_Config("InputCSVFilePath")]</OutArgument>
       </Assign.To>
@@ -97,22 +84,15 @@
         <InArgument x:TypeArguments="x:Object">[InputFilePath]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="Excel output" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="500,60" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Please enter the complete file path of the Output Matrix .xlsx:&quot;]" />
-    <ui:SelectFile DisplayName="Select File" Filter="All files (*.*)|*.*" sap:VirtualizedContainerService.HintSize="500,22.4" sap2010:WorkflowViewState.IdRef="SelectFile_2" SelectedFile="[OutputFilePath]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke OutputValidator workflow" sap:VirtualizedContainerService.HintSize="500,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\OutputValidator.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="500,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[OutputFilePath.ToString]" />
-    <Assign DisplayName="Assign Input .CSV File Path" sap:VirtualizedContainerService.HintSize="500,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="GitHub Repo URL Input .CSV" DisplayName="Message Box - Output Folder Path to Save OutputMatrix.XLSX" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Please enter the complete file path of the output folder to save OutputMatrix.XLSX:&quot;]" />
+    <ui:SelectFolder DisplayName="Select Folder" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SelectFolder_1" SelectedFolder="[OutputFolderPath]" />
+    <Assign DisplayName="Assign OutputMatrix.XLSX File Path" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Object">[io_Config("OutputCSVFilePath")]</OutArgument>
+        <OutArgument x:TypeArguments="x:Object">[io_Config("OutputMatrixFilePath")]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Object">[OutputFilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String">[OutputFolderPath + "\OutputMatrix.XLSX"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="500,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;end of user prompt sequence&quot;]" />
   </Sequence>
 </Activity>

@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="in_RepoAFolderName" Type="InArgument(x:String)" />
     <x:Property Name="in_RepoBFolderName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputMatrixFilePath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>549.333333333333,1830</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1280.66666666667,1790</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FilterResults_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -73,7 +74,6 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Outputs averaged similarity index between 2 repositories with GitDiff available from perfroming git diff" DisplayName="FilterResults" sap:VirtualizedContainerService.HintSize="426,1725.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -174,6 +174,6 @@
         <InArgument x:TypeArguments="x:String">[in_RepoBFolderName.Split("-"c)(0)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[HighSimilarityDT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="384,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[HighSimilarityA+HighSimilarityB]" WorkbookPath="Data\Output\OutputMatrix.xlsx" />
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[HighSimilarityDT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="384,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[HighSimilarityA+HighSimilarityB]" WorkbookPath="[in_OutputMatrixFilePath]" />
   </Sequence>
 </Activity>

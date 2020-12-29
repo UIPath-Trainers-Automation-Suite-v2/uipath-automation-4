@@ -4,6 +4,7 @@
     <x:Property Name="in_RepoBFolderName" Type="InArgument(x:String)" />
     <x:Property Name="out_SimilarityPercentage" Type="OutArgument(x:Double)" />
     <x:Property Name="in_GitDiffOutputPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutputMatrixFilePath" Type="InArgument(x:String)" />
   </x:Members>
   <this:AnalyzeGitDiff.in_GitDiffOutputPath>
     <InArgument x:TypeArguments="x:String" />
@@ -11,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>549.333333333333,1433.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1280.66666666667,1393.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AnalyzeGitDiff_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -72,6 +73,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -126,8 +128,15 @@
       <If.Then>
         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FilterResults workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\FilterResults.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">[in_RepoAFolderName]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">[in_RepoBFolderName]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RepoAFolderName">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_RepoAFolderName" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RepoBFolderName">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_RepoBFolderName" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_OutputMatrixFilePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutputMatrixFilePath" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
