@@ -1,0 +1,11 @@
+Param(
+	[Parameter(Mandatory=$true)] [string]$RepoAFullPath,
+	[Parameter(Mandatory=$true)] [string]$RepoBFullPath,
+	[Parameter(Mandatory=$true)] [string]$GitDiffOutputPath
+)
+
+try{
+	git config core.safecrlf false
+	git diff --patience --no-index -C1% -wbB --output $GitDiffOutputPath $RepoAFullPath $RepoBFullPath
+} 
+catch { "Unable to Git Diff $RepoAFullPath against $RepoBFullPath" }

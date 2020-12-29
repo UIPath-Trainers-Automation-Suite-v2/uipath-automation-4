@@ -1,0 +1,12 @@
+Param(
+	[Parameter(Mandatory=$true)] [string]$RepoLink,
+	[Parameter(Mandatory=$true)] [string]$RepoTargetPath,
+	[Parameter(Mandatory=$true)] [string]$RepoGitInfoPath
+)
+
+try{
+	cd $RepoTargetPath
+	git clone $RepoLink --quiet
+	rm $RepoGitInfoPath -r -fo 
+} 
+catch { "Unable to clone from $RepoLink" }
