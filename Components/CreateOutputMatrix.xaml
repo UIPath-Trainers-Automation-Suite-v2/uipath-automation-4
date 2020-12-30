@@ -1,0 +1,129 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateOutputMatrix" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SimilarityPercentageDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_GitHubRepoURLs" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_OutputMatrixFilePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:CreateOutputMatrix.in_SimilarityPercentageDT>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:CreateOutputMatrix.in_SimilarityPercentageDT>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1322,1605</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateOutputMatrix_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="30">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Sequence to create OutputMatrix.XLSX, print GitHub Repo URLs from input .CSV to X-axis and Y-axis, and print similarity percentage of unique GitHub Project Repository pair from in_SimilarityPercentageDT to Output Matrix sheet for RepoA/RepoB and RepoB/RepoA." DisplayName="CreateOutputMatrix" sap:VirtualizedContainerService.HintSize="469,1500" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Output Matrix" Name="ExcelSheetName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="427,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Creating output matrix&quot;]" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="427,651" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_GitHubRepoURLs]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,517" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:WriteCell Cell="[&quot;A&quot; + (2 + in_GitHubRepoURLs.IndexOf(item)).ToString]" DisplayName="Write Cell - GitHub Repo URL on Y-Axis" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="[ExcelSheetName]" Text="[&quot;=HYPERLINK(&quot; + Chr(34) + item + Chr(34) +&quot;)&quot;]" WorkbookPath="[in_OutputMatrixFilePath]" />
+            <ui:WriteCell Cell="[If(in_GitHubRepoURLs.IndexOf(item) &lt; 25, Chr(Asc(&quot;B&quot;) + in_GitHubRepoURLs.IndexOf(item)).ToString, &quot;A&quot; + Chr(Asc(&quot;A&quot;) + in_GitHubRepoURLs.IndexOf(item) - 25).ToString) + &quot;1&quot;]" DisplayName="Write Cell - GitHub Repo URL on X-Axis" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="[ExcelSheetName]" Text="[item.Split(&quot;/&quot;c)(4)]" WorkbookPath="[in_OutputMatrixFilePath]" />
+            <ui:WriteCell Cell="[If(in_GitHubRepoURLs.IndexOf(item) &lt; 25, Chr(Asc(&quot;B&quot;) + in_GitHubRepoURLs.IndexOf(item)).ToString, &quot;A&quot; + Chr(Asc(&quot;A&quot;) + in_GitHubRepoURLs.IndexOf(item) - 25).ToString) + (2 + in_GitHubRepoURLs.IndexOf(item)).ToString]" DisplayName="Write Cell - GitHub Repo 100% Self-Similarity on Diagonal" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="[ExcelSheetName]" Text="100.00 %" WorkbookPath="[in_OutputMatrixFilePath]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_SimilarityPercentageDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="426.666666666667,514" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,361.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:WriteCell Cell="[If(in_GitHubRepoURLs.IndexOf(row(&quot;RepoA&quot;).ToString) &lt; 25, Chr(Asc(&quot;B&quot;) + in_GitHubRepoURLs.IndexOf(row(&quot;RepoA&quot;).ToString)).ToString, &quot;A&quot; + Chr(Asc(&quot;A&quot;) + in_GitHubRepoURLs.IndexOf(row(&quot;RepoA&quot;).ToString) - 25).ToString) + (2 + in_GitHubRepoURLs.IndexOf(row(&quot;RepoB&quot;).ToString)).ToString]" DisplayName="Write Cell - RepoA/RepoB Similarity Percentage" sap:VirtualizedContainerService.HintSize="334,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[ExcelSheetName]" Text="[Double.Parse(row(&quot;SimilarityPercentage&quot;).ToString).ToString(&quot;P&quot;)]" WorkbookPath="[in_OutputMatrixFilePath]" />
+            <ui:WriteCell Cell="[If(in_GitHubRepoURLs.IndexOf(row(&quot;RepoB&quot;).ToString) &lt; 25, Chr(Asc(&quot;B&quot;) + in_GitHubRepoURLs.IndexOf(row(&quot;RepoB&quot;).ToString)).ToString, &quot;A&quot; + Chr(Asc(&quot;A&quot;) + in_GitHubRepoURLs.IndexOf(row(&quot;RepoB&quot;).ToString) - 25).ToString) + (2 + in_GitHubRepoURLs.IndexOf(row(&quot;RepoA&quot;).ToString)).ToString]" DisplayName="Write Cell - RepoB/RepoA Similarity Percentage" sap:VirtualizedContainerService.HintSize="334,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="[ExcelSheetName]" Text="[Double.Parse(row(&quot;SimilarityPercentage&quot;).ToString).ToString(&quot;P&quot;)]" WorkbookPath="[in_OutputMatrixFilePath]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+  </Sequence>
+</Activity>
