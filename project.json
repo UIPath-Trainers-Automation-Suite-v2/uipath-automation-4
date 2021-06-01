@@ -3,9 +3,9 @@
   "description": "This automation compares GitHub repositories for Revature associates in training against the repositories of their batch mates to check for similarity in code.",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.9.3]",
-    "UiPath.System.Activities": "[20.10.1]",
-    "UiPath.UIAutomation.Activities": "[20.10.6]"
+    "UiPath.Excel.Activities": "[2.10.4]",
+    "UiPath.System.Activities": "[21.4.1]",
+    "UiPath.UIAutomation.Activities": "[21.4.4]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -36,7 +36,7 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": false
+    "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
@@ -49,5 +49,6 @@
   ],
   "isTemplate": false,
   "templateProjectData": {},
-  "publishData": {}
+  "publishData": {},
+  "targetFramework": "Legacy"
 }
