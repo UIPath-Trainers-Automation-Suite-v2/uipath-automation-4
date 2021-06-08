@@ -3,7 +3,9 @@
   "description": "This automation compares GitHub repositories for Revature associates in training against the repositories of their batch mates to check for similarity in code.",
   "main": "Main.xaml",
   "dependencies": {
+    "Microsoft.Office365.MyFiles": "[0.1.1-alpha]",
     "UiPath.Excel.Activities": "[2.10.4]",
+    "UiPath.MicrosoftOffice365.Activities": "[1.6.0]",
     "UiPath.System.Activities": "[21.4.1]",
     "UiPath.UIAutomation.Activities": "[21.4.4]"
   },
@@ -11,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.2.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1-alpha",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
