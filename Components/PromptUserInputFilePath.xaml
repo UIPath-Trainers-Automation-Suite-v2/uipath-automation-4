@@ -111,7 +111,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uma:Office365ApplicationScope ApplicationId="{x:Null}" ApplicationSecret="{x:Null}" ContinueOnError="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Tenant="{x:Null}" Username="{x:Null}" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" sap:VirtualizedContainerService.HintSize="450.4,645.6" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Files" Timeout="120000">
+          <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" ContinueOnError="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" ApplicationId="[io_Config(&quot;Azure_App_Id&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" sap:VirtualizedContainerService.HintSize="450.4,645.6" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Files" Tenant="[io_Config(&quot;Azure_Tenant_Id&quot;).ToString]" Timeout="120000">
             <uma:Office365ApplicationScope.Body>
               <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                 <ActivityAction.Argument>
